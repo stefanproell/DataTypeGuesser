@@ -10,7 +10,7 @@ public class DateTypeDetectorMain {
         DataTypeDetectorAPI api = new DataTypeDetectorAPI();
         api.isDate("16.03.2016");
 
-        CSV_Analyser csv_analyser = new CSV_Analyser("/media/DataIntern/owncloud-sync/2016-Datasets/CSV-Datasets/Testdata/datatypes.csv");
+        CSV_Analyser csv_analyser = new CSV_Analyser("/home/stefan/ownCloud/2016-Datasets/CSV-Datasets/Testdata/datatypes.csv");
 
 
     }
