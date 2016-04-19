@@ -1,20 +1,23 @@
 package at.stefanproell.API;
 
-import com.google.common.base.Strings;
 import com.google.common.primitives.*;
-import com.joestelmach.natty.DateGroup;
-import com.joestelmach.natty.Parser;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
 /**
  * Created by stefan on 21.03.16.
  */
 public class DataTypeDetectorAPI {
+    private ArrayList<String> listOfDateFormats;
 
     public DataTypeDetectorAPI() {
+        listOfDateFormats.add("yyyy mm dd");
+        listOfDateFormats.add("dd/MM/YYYY HH:mm:ss");
+        listOfDateFormats.add("MM/dd/yyyy HH:mm:ss"); // e.g. "11/15/2013 08:00:00"
+
+
     }
 
     public boolean isInteger(String inputString){
@@ -64,29 +67,12 @@ public class DataTypeDetectorAPI {
 
 
     public boolean isDate(String inputString){
-
-        Parser parser = new Parser();
-        List<DateGroup> groups = parser.parse(inputString);
-        Date checkDate = null;
-        for(DateGroup group:groups) {
-            List dates = group.getDates();
-            checkDate = (Date) dates.get(0);
-
-
-         //   int line = group.getLine();
-         //   int column = group.getPosition();
-         //   String matchingValue = group.getText();
-         //   String syntaxTree = group.getSyntaxTree().toStringTree();
-         //   Map parseMap = group.getParseLocations();
-         //   boolean isRecurreing = group.isRecurring();
-         //   Date recursUntil = group.getRecursUntil();
+        for(String dateFormat : listOfDateFormats){
+            if (this.parseDate(inputString,dateFormat)!=null){
+                return true;
+            }
         }
-
-        if(checkDate!=null){
-            return true;
-        }else{
-            return false;
-        }
+        return false;
     }
 
     public boolean isString(String inputString){
@@ -97,6 +83,38 @@ public class DataTypeDetectorAPI {
         }else{
             return true;
         }
+    }
+
+    public String getDataType(String inputString){
+        if (inputString == null || inputString.equalsIgnoreCase("")){
+            return "Null";
+        } else if (this.isDate(inputString)){
+            return "Date";
+        } else if (this.isInteger(inputString)){
+            return "Integer";
+        } else if (this.isDouble(inputString)){
+            return "Double";
+        } else if (this.isBoolean(inputString)){
+            return "Boolean";
+        } else if (this.isFloat(inputString)){
+            return "Float";
+        } else if (this.isLong(inputString)){
+            return "Long";
+        } else if (this.isString(inputString)){
+            return "String";
+        } else {
+            return "UNDEFINED";
+        }
+
+    }
+
+    protected org.joda.time.DateTime parseDate(String inputString, String format) {
+        org.joda.time.DateTime date = null;
+        try {
+            DateTimeFormatter fmt = DateTimeFormat.forPattern(format);
+            date =  fmt.parseDateTime(inputString);
+        } catch (Exception e) { }
+        return date;
     }
 
 
