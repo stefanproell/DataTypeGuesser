@@ -5,7 +5,7 @@ import at.stefanproell.CSV_Tools.CSV_Analyser;
 /**
  * Created by stefan on 21.03.16.
  */
-public class DateTypeDetectorMain {
+public class DataTypeDetectorMain {
     public static void main(String[] args) {
         DataTypeDetectorAPI api = new DataTypeDetectorAPI();
         api.isDate("16.03.2016");

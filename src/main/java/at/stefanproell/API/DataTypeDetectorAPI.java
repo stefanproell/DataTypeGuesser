@@ -15,6 +15,10 @@ public class DataTypeDetectorAPI {
     public DataTypeDetectorAPI() {
         listOfDateFormats = new ArrayList<String>();
         listOfDateFormats.add("yyyy mm dd");
+        listOfDateFormats.add("yyyy-mm-dd");
+        listOfDateFormats.add("yyyy/mm/dd");
+        listOfDateFormats.add("dd/mm/yyyy");
+        listOfDateFormats.add("dd mm dd"); // e.g. 17 05 2016
         listOfDateFormats.add("dd/MM/YYYY HH:mm:ss");
         listOfDateFormats.add("MM/dd/yyyy HH:mm:ss"); // e.g. "11/15/2013 08:00:00"
 
