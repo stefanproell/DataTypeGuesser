@@ -49,6 +49,8 @@ public class CreateTableStatement {
             createMySQLInnoDBTableString = createMySQLInnoDBTableString.substring(0, createMySQLInnoDBTableString.length() - 1);
         }
 
+        createMySQLInnoDBTableString+=");";
+
 
         return createMySQLInnoDBTableString;
     }
