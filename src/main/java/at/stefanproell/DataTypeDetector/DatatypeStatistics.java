@@ -44,6 +44,7 @@ public class DatatypeStatistics {
     public void updateColumnStatistic(String columnName, String dataTypeName, int length) {
 
         this.columnMap.get(columnName).updateRecordLength(length);
+        this.columnMap.get(columnName).incrementRowCount();
 
         if (dataTypeName.equalsIgnoreCase("NULL")) {
             this.columnMap.get(columnName).incrementCountNull();

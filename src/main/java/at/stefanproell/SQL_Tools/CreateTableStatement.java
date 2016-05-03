@@ -3,6 +3,7 @@ package at.stefanproell.SQL_Tools;
 import at.stefanproell.DataTypeDetector.ColumnMetadata;
 import at.stefanproell.DataTypeDetector.DatatypeStatistics;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,9 +32,17 @@ public class CreateTableStatement {
         Map<String, ColumnMetadata> map = statistics.getColumnMap();
 
         for (Map.Entry<String, ColumnMetadata> column : map.entrySet()) {
-            System.out.println("Key = " + column.getKey() );
+            String columnName = column.getKey();
+            String dataType = this.strictDataType(column.getValue());
+            String mySQLDataType = this.dataTypeMappingMap.get(dataType);
 
-            createMySQLInnoDBTableString+=
+            if(mySQLDataType.equalsIgnoreCase("INTEGER") ||mySQLDataType.equalsIgnoreCase("BIGINTEGER") || mySQLDataType.equalsIgnoreCase("VARCHAR")  ){
+                mySQLDataType+= "("+column.getValue().getRecordLength()+")";
+            }
+
+
+
+            createMySQLInnoDBTableString+=columnName+ " " + mySQLDataType + ",";
 
         }
         if (createMySQLInnoDBTableString.endsWith(",")) {
@@ -44,8 +53,46 @@ public class CreateTableStatement {
         return createMySQLInnoDBTableString;
     }
 
+    /**
+     *
+     * @param column
+     * @return
+     */
     private String strictDataType(ColumnMetadata column){
+        if (this.isStrict(column)){
+            HashMap <String, Integer> dataTypes = column.getDataTypes();
+            for (Map.Entry<String, Integer> entry : dataTypes.entrySet())
+            {
+                if(entry.getValue() == column.getRowCount()){
+                    return entry.getKey();
+                }
+            }
 
+        }
+        return null;
+
+    }
+
+    /**
+     * Return true if all records have the same type
+     * @param column
+     * @return
+     */
+    private boolean isStrict(ColumnMetadata column){
+        HashMap <String, Integer> dataTypes = column.getDataTypes();
+        int maxValueInMap=(Collections.max(dataTypes.values()));
+
+
+        for (Map.Entry<String, Integer> entry : dataTypes.entrySet())
+        {
+            if(entry.getValue() == maxValueInMap){
+                if(maxValueInMap==column.getRowCount()){
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
 }

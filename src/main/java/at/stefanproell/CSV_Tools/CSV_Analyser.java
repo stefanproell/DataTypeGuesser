@@ -25,9 +25,9 @@ public class CSV_Analyser {
 
     private DataTypeDetectorAPI detectorAPI;
 
-    public CSV_Analyser(String csvFilePath) {
+    public CSV_Analyser(File csvFile) {
         this.detectorAPI = new DataTypeDetectorAPI();
-        this.parseCSV(csvFilePath);
+        this.parseCSV(csvFile);
         this.statistics = new DatatypeStatistics();
         this.statistics.initColumnObjects(this.headersArray);
         this.analyse(this.csvAsMap);
@@ -46,12 +46,12 @@ public class CSV_Analyser {
 
     /**
      * Parse a CSV file and store it in a HashMap
-     * @param csvFilePath
+     * @param csvFile
      */
-    public void parseCSV(String csvFilePath) {
+    public void parseCSV(File csvFile) {
 
         try {
-            File csvFile = new File(csvFilePath);
+
             this.csvAsMap = this.readCSV(csvFile);
         } catch (Exception e) {
             e.printStackTrace();

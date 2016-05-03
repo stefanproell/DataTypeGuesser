@@ -10,16 +10,9 @@ import java.util.logging.Logger;
 public class ColumnMetadata {
     private static final Logger logger= Logger.getLogger( ColumnMetadata.class.getName() );
     
-    private Map dataTypes = new HashMap<String, Integer>();
+    private HashMap<String, Integer> dataTypes;
     
-    
-    private int countInteger;
-    private int countLong;
-    private int countFloat;
-    private int countDouble;
-    private int countBoolean;
-    private int countDate;
-    private int countString;
+
     private int rowCount;
     private int columnClount;
     private int nullCount;
@@ -27,6 +20,8 @@ public class ColumnMetadata {
     private int recordLength;
 
     public ColumnMetadata() {
+        dataTypes = new HashMap<String, Integer>();
+
         this.dataTypes.put("Integer",0);
         this.dataTypes.put("Boolean",0);
         this.dataTypes.put("Date",0);
@@ -35,76 +30,9 @@ public class ColumnMetadata {
         this.dataTypes.put("Integer",0);
         this.dataTypes.put("Long",0);
         this.dataTypes.put("String",0);
-        
-        
-        this.countInteger = 0;
-        this.countLong = 0;
-        this.countFloat = 0;
-        this.countDouble = 0;
-        this.countBoolean = 0;
-        this.countDate = 0;
-        this.countString = 0;
-        this.rowCount = 0;
-        this.columnClount = 0;
-        this.nullCount = 0;
-        this.recordLength = 0;
+
     }
 
-    public int getCountInteger() {
-        return countInteger;
-    }
-
-    public void setCountInteger(int countInteger) {
-        this.countInteger = countInteger;
-    }
-
-    public int getCountLong() {
-        return countLong;
-    }
-
-    public void setCountLong(int countLong) {
-        this.countLong = countLong;
-    }
-
-    public int getCountFloat() {
-        return countFloat;
-    }
-
-    public void setCountFloat(int countFloat) {
-        this.countFloat = countFloat;
-    }
-
-    public int getCountDouble() {
-        return countDouble;
-    }
-
-    public void setCountDouble(int countDouble) {
-        this.countDouble = countDouble;
-    }
-
-    public int getCountBoolean() {
-        return countBoolean;
-    }
-
-    public void setCountBoolean(int countBoolean) {
-        this.countBoolean = countBoolean;
-    }
-
-    public int getCountDate() {
-        return countDate;
-    }
-
-    public void setCountDate(int countDate) {
-        this.countDate = countDate;
-    }
-
-    public int getCountString() {
-        return countString;
-    }
-
-    public void setCountString(int countString) {
-        this.countString = countString;
-    }
 
     public int getRowCount() {
         return rowCount;
@@ -149,35 +77,33 @@ public class ColumnMetadata {
     // ---------
 
     public void incrementCountInteger() {
-        this.countInteger = countInteger+1;
+        this.incrementDataTypeCounter("Integer");
     }
 
 
     public void incrementCountLong() {
-        this.countLong = countLong+1;
+        this.incrementDataTypeCounter("Long");
     }
 
 
     public void incrementCountFloat() {
-        this.countFloat = countFloat+1;
+        this.incrementDataTypeCounter("Float");
     }
 
     public void incrementCountDouble() {
-        this.countDouble = countDouble+1;
+        this.incrementDataTypeCounter("Double");
     }
 
-    public void incrementCountBoolean() {
-        this.countBoolean = countBoolean+1;
-    }
+    public void incrementCountBoolean() {this.incrementDataTypeCounter("Boolean");}
 
 
     public void incrementCountDate() {
-        this.countDate = countDate+1;
+        this.incrementDataTypeCounter("Date");
     }
 
 
     public void incrementCountString() {
-        this.countString = countString+1;
+        this.incrementDataTypeCounter("String");
     }
 
     public void incrementRowCount() {
@@ -202,20 +128,34 @@ public class ColumnMetadata {
 
     }
 
+    /**
+     * Prnt an overview
+     */
     public void printColumnStatistics(){
         System.out.println("Column name: " + this.getColumnName());
-        System.out.println("Number of records: " + this.columnClount);
+        System.out.println("Number of records: " + this.rowCount);
         System.out.println("Max record length:" + this.getRecordLength());
-        System.out.println("Boolean: " + this.getCountBoolean());
-        System.out.println("Date: " + this.getCountDate());
-        System.out.println("Double: " + this.getCountDouble());
-        System.out.println("Float: " + this.getCountFloat());
-        System.out.println("Integer: " + this.getCountInteger());
-        System.out.println("Long " + this.getCountLong());
-        System.out.println("String: " + this.getCountString());
+        System.out.println("Boolean: " + this.dataTypes.get("Boolean"));
+        System.out.println("Date: " + this.dataTypes.get("Date"));
+        System.out.println("Double: " + this.dataTypes.get("Double"));
+        System.out.println("Float: " + this.dataTypes.get("Float"));
+        System.out.println("Integer: " + this.dataTypes.get("Integer"));
+        System.out.println("Long " + this.dataTypes.get("Long"));
+        System.out.println("String: " + this.dataTypes.get("String"));
         System.out.println("Null: " + this.getNullCount());
     }
 
+    private void incrementDataTypeCounter(String dataType){
+        this.dataTypes.put(dataType,( Integer)this.dataTypes.get(dataType) + 1);
 
 
+    }
+
+    public HashMap<String, Integer> getDataTypes() {
+        return dataTypes;
+    }
+
+    public void setDataTypes(HashMap<String,Integer> dataTypes) {
+        this.dataTypes = dataTypes;
+    }
 }
