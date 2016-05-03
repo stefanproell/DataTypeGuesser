@@ -1,12 +1,18 @@
 package at.stefanproell.DataTypeDetector;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
  * Created by stefan on 22.03.16.
  */
-public class CSV_Datatype_Statistics_Column {
-    private static final Logger logger= Logger.getLogger( CSV_Datatype_Statistics_Column.class.getName() );
+public class ColumnMetadata {
+    private static final Logger logger= Logger.getLogger( ColumnMetadata.class.getName() );
+    
+    private Map dataTypes = new HashMap<String, Integer>();
+    
+    
     private int countInteger;
     private int countLong;
     private int countFloat;
@@ -20,7 +26,17 @@ public class CSV_Datatype_Statistics_Column {
     private String columnName;
     private int recordLength;
 
-    public CSV_Datatype_Statistics_Column() {
+    public ColumnMetadata() {
+        this.dataTypes.put("Integer",0);
+        this.dataTypes.put("Boolean",0);
+        this.dataTypes.put("Date",0);
+        this.dataTypes.put("Double",0);
+        this.dataTypes.put("Float",0);
+        this.dataTypes.put("Integer",0);
+        this.dataTypes.put("Long",0);
+        this.dataTypes.put("String",0);
+        
+        
         this.countInteger = 0;
         this.countLong = 0;
         this.countFloat = 0;
@@ -199,7 +215,6 @@ public class CSV_Datatype_Statistics_Column {
         System.out.println("String: " + this.getCountString());
         System.out.println("Null: " + this.getNullCount());
     }
-
 
 
 

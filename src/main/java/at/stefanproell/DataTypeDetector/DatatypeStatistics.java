@@ -6,52 +6,39 @@ import java.util.Map;
 /**
  * Created by stefan on 22.03.16.
  */
-public class CSV_Datatype_Statistics {
-    private String filePath;
-    private Map<String, CSV_Datatype_Statistics_Column> columnMap;
-    private String[] headers;
+public class DatatypeStatistics {
 
-    public CSV_Datatype_Statistics(String filePath) {
-        this.filePath = filePath;
-        this.columnMap = new HashMap<String, CSV_Datatype_Statistics_Column>();
+    private Map<String, ColumnMetadata> columnMap;
+
+
+    public DatatypeStatistics() {
+
+        this.columnMap = new HashMap<String, ColumnMetadata>();
 
     }
 
 
     /**
-     * Iterate over all headers from the CSV file. Each element of the header array denotes the name of a column. For each of the columns, create a new column object to store the statistics.
+     * Iterate over all headers from the CSV file. Each element of the header array denotes the name of a column.
+     * For each of the columns, create a new column object to store the statistics.
      */
-    public void createCSV_Datatype_Statistics_Column_Objects() {
-        for (String columnName : this.headers) {
-            CSV_Datatype_Statistics_Column column = new CSV_Datatype_Statistics_Column();
+    public void initColumnObjects(String[] headers) {
+        for (String columnName : headers) {
+            ColumnMetadata column = new ColumnMetadata();
             column.setColumnName(columnName);
             columnMap.put(columnName, column);
         }
 
     }
 
-    public String[] getHeaders() {
-        return headers;
-    }
 
-    public void setHeaders(String[] headers) {
-        this.headers = headers;
-    }
 
-    public Map<String, CSV_Datatype_Statistics_Column> getColumnMap() {
+    public Map<String, ColumnMetadata> getColumnMap() {
         return columnMap;
     }
 
-    public void setColumnMap(Map<String, CSV_Datatype_Statistics_Column> columnMap) {
+    public void setColumnMap(Map<String, ColumnMetadata> columnMap) {
         this.columnMap = columnMap;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 
     public void updateColumnStatistic(String columnName, String dataTypeName, int length) {
@@ -80,12 +67,9 @@ public class CSV_Datatype_Statistics {
     }
 
     public void printResults() {
-        for (Map.Entry<String, CSV_Datatype_Statistics_Column> column : this.columnMap.entrySet()) {
+        for (Map.Entry<String, ColumnMetadata> column : this.columnMap.entrySet()) {
             System.out.println("------------------------------------");
             column.getValue().printColumnStatistics();
-
-
-
         }
 
     }
