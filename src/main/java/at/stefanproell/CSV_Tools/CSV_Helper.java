@@ -15,7 +15,5 @@ public class CSV_Helper {
      */
     public String prettyName(String input){
         return input.replaceAll("[^a-zA-Z0-9]", "_");
-
-
     }
 }

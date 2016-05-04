@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="19958931-c995-43c8-8036-1361d00b03a9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Analyser.java" afterPath="$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Analyser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Helper.java" afterPath="$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Helper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/stefanproell/Main/DataTypeDetectorMain.java" afterPath="$PROJECT_DIR$/src/main/java/at/stefanproell/Main/DataTypeDetectorMain.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/stefanproell/SQL_Tools/CreateTableStatement.java" afterPath="$PROJECT_DIR$/src/main/java/at/stefanproell/SQL_Tools/CreateTableStatement.java" />
     </list>
     <ignored path="DataTypeGuesser.iws" />
@@ -26,29 +30,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DatatypeStatistics.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/DatatypeStatistics.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
-              <folding>
-                <element signature="e#867#868#0" expanded="true" />
-                <element signature="e#899#900#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataTypeDetectorAPI.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/API/DataTypeDetectorAPI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1121">
-              <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ColumnMetadata.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/ColumnMetadata.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,23 +55,23 @@
       <file leaf-file-name="CSV_Analyser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Analyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-981">
-              <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+            <state relative-caret-position="4">
+              <caret line="93" column="37" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
               <folding>
-                <element signature="e#3860#3861#0" expanded="true" />
-                <element signature="e#3893#3894#0" expanded="true" />
-                <element signature="e#3957#3958#0" expanded="true" />
-                <element signature="e#4001#4002#0" expanded="true" />
+                <element signature="e#3872#3873#0" expanded="true" />
+                <element signature="e#3905#3906#0" expanded="true" />
+                <element signature="e#3969#3970#0" expanded="true" />
+                <element signature="e#4013#4014#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CSV_Helper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Helper.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -99,8 +80,8 @@
       <file leaf-file-name="CreateTableStatement.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/SQL_Tools/CreateTableStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
+            <state relative-caret-position="1605">
+              <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,26 +89,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataTypeDetectorMain.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataTypeDetectorMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/Main/DataTypeDetectorMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+            <state relative-caret-position="420">
+              <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/at/stefanproell/ApiTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2010">
-              <caret line="144" column="40" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
-              <folding>
-                <element signature="e#2065#2066#0" expanded="false" />
-                <element signature="e#2118#2119#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -172,17 +140,17 @@
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/DataTypeDetector.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/CSV_Datatype_Statistics_Column.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/API/DateTypeDetectorMain.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/API/DataTypeDetectorAPI.java" />
         <option value="$PROJECT_DIR$/src/test/java/at/stefanproell/ApiTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/API/DataTypeDetectorMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/CSV_Datatype_Statistics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Analyser.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/DatatypeStatistics.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/ColumnMetadata.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/Main/DataTypeDetectorMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Analyser.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Helper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/Main/DataTypeDetectorMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/stefanproell/SQL_Tools/CreateTableStatement.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -870,7 +838,14 @@
       <option name="project" value="LOCAL" />
       <updated>1462288381189</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="MySQL output">
+      <created>1462288693080</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1462288693080</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -916,7 +891,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="1680" height="1025" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -926,7 +901,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11519608" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3329646" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3329646" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -965,7 +940,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1192,25 +1167,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/at/stefanproell/AppTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/at/stefanproell/DateValidatorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/at/stefanproell/ApiTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2010">
-          <caret line="144" column="40" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
-          <folding>
-            <element signature="e#2065#2066#0" expanded="false" />
-            <element signature="e#2118#2119#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/DataTypeDetector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1259,6 +1215,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/API/DataTypeDetectorAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1121">
+          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/DataTypeDetector/DatatypeStatistics.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -1266,29 +1230,6 @@
           <folding>
             <element signature="e#867#868#0" expanded="true" />
             <element signature="e#899#900#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Analyser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-981">
-          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
-          <folding>
-            <element signature="e#3860#3861#0" expanded="true" />
-            <element signature="e#3893#3894#0" expanded="true" />
-            <element signature="e#3957#3958#0" expanded="true" />
-            <element signature="e#4001#4002#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/Main/DataTypeDetectorMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1315,27 +1256,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Helper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-          <folding />
+        <state relative-caret-position="255">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#296#297#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/SQL_Tools/CreateTableStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
+        <state relative-caret-position="1605">
+          <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/API/DataTypeDetectorAPI.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/CSV_Tools/CSV_Analyser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1121">
-          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="61" />
+        <state relative-caret-position="4">
+          <caret line="93" column="37" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
+          <folding>
+            <element signature="e#3872#3873#0" expanded="true" />
+            <element signature="e#3905#3906#0" expanded="true" />
+            <element signature="e#3969#3970#0" expanded="true" />
+            <element signature="e#4013#4014#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/at/stefanproell/ApiTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1714">
+          <caret line="144" column="40" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/stefanproell/Main/DataTypeDetectorMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

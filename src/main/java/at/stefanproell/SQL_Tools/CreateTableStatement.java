@@ -27,29 +27,86 @@ public class CreateTableStatement {
 
     };
 
+    /**
+     * Create a simple CREATE TABLE statement in the MySQL Dialect
+     * @param tableName
+     * @param statistics
+     * @return
+     */
     public String createMySQLInnoDBTable(String tableName, DatatypeStatistics statistics){
         String createMySQLInnoDBTableString = "CREATE TABLE " + tableName + "(";
-        Map<String, ColumnMetadata> map = statistics.getColumnMap();
 
+        // gather the column metadata
+        Map<String, ColumnMetadata> map = statistics.getColumnMap();
+        // Iterate over the list of column objects
         for (Map.Entry<String, ColumnMetadata> column : map.entrySet()) {
+            // column name
             String columnName = column.getKey();
+            // datatype
             String dataType = this.strictDataType(column.getValue());
+            // map the data type to the SQL dialect
             String mySQLDataType = this.dataTypeMappingMap.get(dataType);
+
+            // append the size to INTEGERs or VARCHAR data types
 
             if(mySQLDataType.equalsIgnoreCase("INTEGER") ||mySQLDataType.equalsIgnoreCase("BIGINTEGER") || mySQLDataType.equalsIgnoreCase("VARCHAR")  ){
                 mySQLDataType+= "("+column.getValue().getRecordLength()+")";
             }
 
-
-
             createMySQLInnoDBTableString+=columnName+ " " + mySQLDataType + ",";
 
         }
+
+        // Remove the latest comma from the list
         if (createMySQLInnoDBTableString.endsWith(",")) {
             createMySQLInnoDBTableString = createMySQLInnoDBTableString.substring(0, createMySQLInnoDBTableString.length() - 1);
         }
 
         createMySQLInnoDBTableString+=");";
+
+
+        return createMySQLInnoDBTableString;
+    }
+
+    /**
+     * Create a simple CREATE TABLE statement in the MySQL Dialect
+     * @param tableName
+     * @param statistics
+     * @return
+     */
+    public String createBeautifulMySQLInnoDBTable(String tableName, DatatypeStatistics statistics){
+        String createMySQLInnoDBTableString = "CREATE TABLE " + tableName + "(\n";
+
+        // gather the column metadata
+        Map<String, ColumnMetadata> map = statistics.getColumnMap();
+        // Iterate over the list of column objects
+        for (Map.Entry<String, ColumnMetadata> column : map.entrySet()) {
+            createMySQLInnoDBTableString+="\t";
+            // column name
+            String columnName = column.getKey();
+            // datatype
+            String dataType = this.strictDataType(column.getValue());
+            // map the data type to the SQL dialect
+            String mySQLDataType = this.dataTypeMappingMap.get(dataType);
+
+            // append the size to INTEGERs or VARCHAR data types
+
+            if(mySQLDataType.equalsIgnoreCase("INTEGER") ||mySQLDataType.equalsIgnoreCase("BIGINTEGER") || mySQLDataType.equalsIgnoreCase("VARCHAR")  ){
+                mySQLDataType+= "("+column.getValue().getRecordLength()+")";
+            }
+            // append complete column definition
+            createMySQLInnoDBTableString+=columnName+ " " + mySQLDataType + ",";
+            createMySQLInnoDBTableString+="\n";
+
+        }
+
+        // Remove the latest comma from the list
+        if (createMySQLInnoDBTableString.endsWith(",")) {
+            createMySQLInnoDBTableString = createMySQLInnoDBTableString.substring(0, createMySQLInnoDBTableString.length() - 1);
+        }
+
+        // close statement
+        createMySQLInnoDBTableString+=");\n";
 
 
         return createMySQLInnoDBTableString;
@@ -95,6 +152,12 @@ public class CreateTableStatement {
         }
 
         return false;
+    }
+
+    public void printStatement(String input){
+        System.out.print(input);
+
+
     }
 
 }

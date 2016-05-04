@@ -61,7 +61,7 @@ public class CSV_Analyser {
 
 
     /**
-     * Analyse
+     * Analyse the CSV map
      * @param csvAsMap
      */
     private void analyse(Map<Integer, Map<String,Object>> csvAsMap){
