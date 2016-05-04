@@ -30,9 +30,5 @@ public class DataTypeDetectorMain {
         logger.info(createBeautifulStatement);
 
         createTable.printStatement(createBeautifulStatement);
-
-
-
-
     }
 }
