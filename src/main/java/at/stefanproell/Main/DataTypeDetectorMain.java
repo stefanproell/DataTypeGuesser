@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 public class DataTypeDetectorMain {
     private static final Logger logger= Logger.getLogger( DataTypeDetectorMain.class.getName() );
     public static void main(String[] args) {
+        // Filepath
         String path = "/home/stefan/OwnCloud/2016-Datasets/CSV-Datasets/Testdata/datatypes.csv";
 
         DataTypeDetectorAPI api = new DataTypeDetectorAPI();
@@ -30,5 +31,7 @@ public class DataTypeDetectorMain {
         logger.info(createBeautifulStatement);
 
         createTable.printStatement(createBeautifulStatement);
+
+        System.exit(0);
     }
 }
