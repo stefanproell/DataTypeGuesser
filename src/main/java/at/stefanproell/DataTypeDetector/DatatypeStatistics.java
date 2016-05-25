@@ -1,6 +1,7 @@
 package at.stefanproell.DataTypeDetector;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,6 +24,19 @@ public class DatatypeStatistics {
      * For each of the columns, create a new column object to store the statistics.
      */
     public void initColumnObjects(String[] headers) {
+        for (String columnName : headers) {
+            ColumnMetadata column = new ColumnMetadata();
+            column.setColumnName(columnName);
+            columnMap.put(columnName, column);
+        }
+
+    }
+
+    /**
+     * Iterate over all headers from the CSV file. Each element of the header array denotes the name of a column.
+     * For each of the columns, create a new column object to store the statistics.
+     */
+    public void initColumnObjects(List<String> headers) {
         for (String columnName : headers) {
             ColumnMetadata column = new ColumnMetadata();
             column.setColumnName(columnName);

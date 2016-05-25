@@ -10,7 +10,9 @@ import org.supercsv.prefs.CsvPreference;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -39,6 +41,8 @@ public class CSV_Analyser {
      * Constructor
      */
     public CSV_Analyser(){
+        this.statistics = new DatatypeStatistics();
+
 
 
     }
@@ -65,6 +69,8 @@ public class CSV_Analyser {
      * @param csvAsMap
      */
     public DatatypeStatistics analyse(Map<Integer, Map<String, Object>> csvAsMap) {
+
+
         DataTypeDetectorAPI detectorAPI = new DataTypeDetectorAPI();
 
         for (Map.Entry<Integer, Map<String, Object>> csvRowMap : csvAsMap.entrySet())
@@ -88,9 +94,39 @@ public class CSV_Analyser {
 
     }
 
+    /**
+     * Analyse the CSV map
+     * @param csvAsMap
+     */
+    public DatatypeStatistics analyse(Map<Integer, Map<String, Object>> csvAsMap, List<String> headerList) {
+
+
+        this.statistics.initColumnObjects(headerList);
+
+
+        DataTypeDetectorAPI detectorAPI = new DataTypeDetectorAPI();
+
+        for (Map.Entry<Integer, Map<String, Object>> csvRowMap : csvAsMap.entrySet()) {
+
+            Map<String, Object> csvRow = csvRowMap.getValue();
+
+            for (Map.Entry<String, Object> column : csvRow.entrySet()) {
+                //logger.info("Column: " + column.getKey() + " Value: " + column.getValue() + " Detected type "+ this.detectorAPI.getDataType(column.getValue().toString()));
+                String columnName = column.getKey();
+                String dataType = detectorAPI.getDataType((String) column.getValue());
+                int recordLength = column.getValue().toString().length();
+                this.statistics.updateColumnStatistic(columnName, dataType, recordLength);
+
+            }
+
+        }
+        return this.statistics;
+    }
+
 
     /**
      * Read a CSV file into a HashMap. Uses Super CSV
+     *
      * @param csvFile
      * @return
      * @throws Exception
@@ -134,6 +170,51 @@ public class CSV_Analyser {
     }
 
 
+    /**
+     * Read a CSV file into a HashMap. Utilises provided headers.
+     * @param csvFile
+     * @return
+     * @throws Exception
+     */
+    public Map<Integer, Map<String, Object>> readCSV(File csvFile, List<String> headersList) throws Exception {
+
+        ICsvMapReader mapReader = null;
+        Map<String, Object> rowAsMap;
+        Map<Integer, Map<String, Object>> csvAsMap = new HashMap<Integer, Map<String, Object>>();
+
+
+        try {
+            mapReader = new CsvMapReader(new FileReader(csvFile), CsvPreference.STANDARD_PREFERENCE);
+
+            // the headersArray columns are used as the keys to the Map
+
+            this.headersArray = new String[headersList.size()];
+            headersList.toArray(this.headersArray);
+            int amountOfColumns = this.headersArray.length;
+
+            final CellProcessor[] processors = new CellProcessor[amountOfColumns];
+            for (int i = 0; i < amountOfColumns; i++) {
+                processors[i] = new Optional();
+
+            }
+
+
+            while ((rowAsMap = mapReader.read(this.headersArray, processors)) != null) {
+
+                //System.out.println(String.format("lineNo=%s, rowNo=%s, rowAsMap=%s", mapReader.getLineNumber(),mapReader.getRowNumber(), rowAsMap));
+                csvAsMap.put(mapReader.getRowNumber(), rowAsMap);
+
+            }
+
+        } finally {
+            if (mapReader != null) {
+                mapReader.close();
+            }
+        }
+
+        return csvAsMap;
+    }
+
     public DatatypeStatistics getStatistics() {
         return statistics;
     }
@@ -160,5 +241,11 @@ public class CSV_Analyser {
 
     public void setHeadersArray(String[] headersArray) {
         this.headersArray = headersArray;
+    }
+
+    public void setHeadersArray(List<String> headersList) {
+        this.headersArray = new String[headersList.size()];
+        this.headersArray = headersList.toArray(this.headersArray);
+
     }
 }
