@@ -3,16 +3,20 @@ package at.stefanproell.DataTypeDetector;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by stefan on 22.03.16.
  */
 public class DatatypeStatistics {
 
+    private final Logger logger;
     private Map<String, ColumnMetadata> columnMap;
 
 
     public DatatypeStatistics() {
+        this.logger = Logger.getLogger(this.getClass().getName());
+
 
         this.columnMap = new HashMap<String, ColumnMetadata>();
 
@@ -24,6 +28,8 @@ public class DatatypeStatistics {
      * For each of the columns, create a new column object to store the statistics.
      */
     public void initColumnObjects(String[] headers) {
+        this.columnMap = new HashMap<String, ColumnMetadata>();
+
         for (String columnName : headers) {
             ColumnMetadata column = new ColumnMetadata();
             column.setColumnName(columnName);
@@ -37,6 +43,7 @@ public class DatatypeStatistics {
      * For each of the columns, create a new column object to store the statistics.
      */
     public void initColumnObjects(List<String> headers) {
+        this.columnMap = new HashMap<String, ColumnMetadata>();
         for (String columnName : headers) {
             ColumnMetadata column = new ColumnMetadata();
             column.setColumnName(columnName);
@@ -57,6 +64,7 @@ public class DatatypeStatistics {
 
     public void updateColumnStatistic(String columnName, String dataTypeName, int length) {
 
+        logger.info("Aktuelle Werte. Column name " + columnName + " data type: " + dataTypeName + " length: " + length);
         this.columnMap.get(columnName).updateRecordLength(length);
         this.columnMap.get(columnName).incrementRowCount();
 

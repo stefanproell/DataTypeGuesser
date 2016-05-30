@@ -40,12 +40,16 @@ public class CSV_Analyser {
     /**
      * Constructor
      */
-    public CSV_Analyser(){
+    public CSV_Analyser(String[] headersArray) {
+        this.headersArray = headersArray;
         this.statistics = new DatatypeStatistics();
-
-
-
+        this.statistics.initColumnObjects(headersArray);
     }
+
+    public CSV_Analyser() {
+        this.statistics = new DatatypeStatistics();
+    }
+
 
     /**
      * Parse a CSV file and store it in a HashMap
@@ -81,8 +85,8 @@ public class CSV_Analyser {
             for (Map.Entry<String, Object> column: csvRow.entrySet())
             {
                 //logger.info("Column: " + column.getKey() + " Value: " + column.getValue() + " Detected type "+ this.detectorAPI.getDataType(column.getValue().toString()));
-                String columnName = column.getKey();
-                String dataType = detectorAPI.getDataType((String) column.getValue());
+                String columnName = (String) column.getValue();
+                String dataType = detectorAPI.getDataType((String) column.getKey());
                 int recordLength = column.getValue().toString().length();
                 this.statistics.updateColumnStatistic(columnName,dataType,recordLength);
 
@@ -98,7 +102,7 @@ public class CSV_Analyser {
      * Analyse the CSV map
      * @param csvAsMap
      */
-    public DatatypeStatistics analyse(Map<Integer, Map<String, Object>> csvAsMap, List<String> headerList) {
+    public DatatypeStatistics analyse(Map<Integer, Map<String, Object>> csvAsMap, String[] headerList) {
 
 
         this.statistics.initColumnObjects(headerList);
