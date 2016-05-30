@@ -158,4 +158,18 @@ public class ColumnMetadata {
     public void setDataTypes(HashMap<String,Integer> dataTypes) {
         this.dataTypes = dataTypes;
     }
+
+    /**
+     * Returns the data type with the most records
+     */
+    public String getMostLiklyDataTypeOfColumn() {
+        Map.Entry<String, Integer> maxdataTypes = null;
+
+        for (Map.Entry<String, Integer> entry : this.getDataTypes().entrySet()) {
+            if (maxdataTypes == null || entry.getValue().compareTo(maxdataTypes.getValue()) > 0) {
+                maxdataTypes = entry;
+            }
+        }
+        return maxdataTypes.getKey();
+    }
 }

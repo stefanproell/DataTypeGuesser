@@ -64,7 +64,7 @@ public class CSV_Analyser {
             e.printStackTrace();
         }
 
-        return null;
+        return this.csvAsMap;
     }
 
 
@@ -115,10 +115,17 @@ public class CSV_Analyser {
             Map<String, Object> csvRow = csvRowMap.getValue();
 
             for (Map.Entry<String, Object> column : csvRow.entrySet()) {
-                //logger.info("Column: " + column.getKey() + " Value: " + column.getValue() + " Detected type "+ this.detectorAPI.getDataType(column.getValue().toString()));
+
                 String columnName = column.getKey();
                 String dataType = detectorAPI.getDataType((String) column.getValue());
-                int recordLength = column.getValue().toString().length();
+                logger.info("Column: " + column.getKey() + " Value: " + column.getValue());
+
+                int recordLength = 0;
+
+                if (column.getValue() != null) {
+                    recordLength = column.getValue().toString().length();
+                }
+
                 this.statistics.updateColumnStatistic(columnName, dataType, recordLength);
 
             }
