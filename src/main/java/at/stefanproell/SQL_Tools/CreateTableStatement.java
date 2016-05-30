@@ -132,6 +132,7 @@ public class CreateTableStatement {
 
     }
 
+
     /**
      * Return true if all records have the same type
      * @param column
@@ -157,7 +158,19 @@ public class CreateTableStatement {
     public void printStatement(String input){
         System.out.print(input);
 
+    }
 
+    public String getMySQLColumn(ColumnMetadata column){
+        String dataType = this.strictDataType(column);
+        // map the data type to the SQL dialect
+        String mySQLDataType = this.dataTypeMappingMap.get(dataType);
+
+        // append the size to INTEGERs or VARCHAR data types
+
+        if(mySQLDataType.equalsIgnoreCase("INTEGER") ||mySQLDataType.equalsIgnoreCase("BIGINTEGER") || mySQLDataType.equalsIgnoreCase("VARCHAR")  ){
+            mySQLDataType+= "("+column.getRecordLength()+")";
+        }
+        return mySQLDataType;
     }
 
 }
