@@ -19,9 +19,9 @@ public class CreateTableStatement {
         this.dataTypeMappingMap = new HashMap<String, String>();
         this.dataTypeMappingMap.put("Boolean","BOOLEAN");
         this.dataTypeMappingMap.put("Date","DATE");
-        this.dataTypeMappingMap.put("Double","DOUBLE");
+        this.dataTypeMappingMap.put("Double", "FLOAT");
         this.dataTypeMappingMap.put("Float","FLOAT");
-        this.dataTypeMappingMap.put("Integer","INTEGER");
+        this.dataTypeMappingMap.put("Integer", "INT");
         this.dataTypeMappingMap.put("Long","BIGINT");
         this.dataTypeMappingMap.put("String","VARCHAR");
 
@@ -161,14 +161,14 @@ public class CreateTableStatement {
     }
 
     public String getMySQLColumn(ColumnMetadata column){
-        String dataType = this.strictDataType(column);
+        String dataType = column.getMostLiklyDataTypeOfColumn();
         // map the data type to the SQL dialect
         String mySQLDataType = this.dataTypeMappingMap.get(dataType);
 
         // append the size to INTEGERs or VARCHAR data types
 
-        if(mySQLDataType.equalsIgnoreCase("INTEGER") ||mySQLDataType.equalsIgnoreCase("BIGINTEGER") || mySQLDataType.equalsIgnoreCase("VARCHAR")  ){
-            mySQLDataType+= "("+column.getRecordLength()+")";
+        if (mySQLDataType != null && (mySQLDataType.equalsIgnoreCase("INT") || mySQLDataType.equalsIgnoreCase("BIGINT") || mySQLDataType.equalsIgnoreCase("VARCHAR"))) {
+            mySQLDataType += "(" + (column.getRecordLength() + 1) + ")";
         }
         return mySQLDataType;
     }
