@@ -64,7 +64,7 @@ public class DatatypeStatistics {
 
     public void updateColumnStatistic(String columnName, String dataTypeName, int length) {
 
-        logger.info("Aktuelle Werte. Column name " + columnName + " data type: " + dataTypeName + " length: " + length);
+        //logger.info("Aktuelle Werte. Column name " + columnName + " data type: " + dataTypeName + " length: " + length);
         this.columnMap.get(columnName).updateRecordLength(length);
         this.columnMap.get(columnName).incrementRowCount();
 

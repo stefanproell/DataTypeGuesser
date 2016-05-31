@@ -118,7 +118,7 @@ public class CSV_Analyser {
 
                 String columnName = column.getKey();
                 String dataType = detectorAPI.getDataType((String) column.getValue());
-                logger.info("Column: " + column.getKey() + " Value: " + column.getValue());
+                //logger.info("Column: " + column.getKey() + " Value: " + column.getValue());
 
                 int recordLength = 0;
 
