@@ -169,6 +169,11 @@ public class CreateTableStatement {
 
         if (mySQLDataType != null && (mySQLDataType.equalsIgnoreCase("INT") || mySQLDataType.equalsIgnoreCase("BIGINT") || mySQLDataType.equalsIgnoreCase("VARCHAR"))) {
             mySQLDataType += "(" + (column.getRecordLength() + 1) + ")";
+        } else if (mySQLDataType.equalsIgnoreCase("DOUBLE") || mySQLDataType.equalsIgnoreCase("FLOAT")) {
+            // TODO: 03.06.16 Warning, We only use decimals here! No floats!
+            mySQLDataType = "DECIMAL(65,30)";
+
+
         }
         return mySQLDataType;
     }
