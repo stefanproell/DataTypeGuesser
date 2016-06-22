@@ -4,16 +4,14 @@ import at.stefanproell.API.DataTypeDetectorAPI;
 import at.stefanproell.DataTypeDetector.DatatypeStatistics;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvListReader;
 import org.supercsv.io.CsvMapReader;
+import org.supercsv.io.ICsvListReader;
 import org.supercsv.io.ICsvMapReader;
 import org.supercsv.prefs.CsvPreference;
 
-import java.io.File;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -225,6 +223,57 @@ public class CSV_Analyser {
 
         return csvAsMap;
     }
+
+    /**
+     * Verify if a column is unique
+     *
+     * @param columnName
+     * @param csvPath
+     * @return
+     */
+    public boolean verifyUniquenessOfColumn(String columnName, String csvPath) {
+
+        ICsvListReader reader = null;
+
+        boolean isUnique = false;
+        try {
+            reader = new CsvListReader(new FileReader(csvPath), CsvPreference.STANDARD_PREFERENCE);
+            String[] headers = reader.getHeader(true); // skip header
+
+            List<String> columnValues = new ArrayList<String>();
+            int index = -1;
+
+            for (int i = 0; i < headers.length; i++) {
+                if (headers[i].equals(columnName)) {
+                    index = i;
+                    break;
+                }
+            }
+
+            List<String> line;
+            while ((line = reader.read()) != null) {
+                columnValues.add(line.get(index));
+            }
+
+            // Store all column values in a set. This removes duplicates.
+            // If the set is smaller than the list, then there have been duplicates.
+            Set<String> set = new HashSet<String>(columnValues);
+
+            if (set.size() == columnValues.size()) {
+                isUnique = true;
+            } else {
+                isUnique = false;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return isUnique;
+
+
+    }
+
 
     public DatatypeStatistics getStatistics() {
         return statistics;
