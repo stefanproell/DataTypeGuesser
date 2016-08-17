@@ -22,6 +22,9 @@ public class ColumnMetadata {
     public ColumnMetadata() {
         dataTypes = new HashMap<String, Integer>();
 
+        this.recordLength=0;
+
+
         this.dataTypes.put("Integer",0);
         this.dataTypes.put("Boolean",0);
         this.dataTypes.put("Date",0);

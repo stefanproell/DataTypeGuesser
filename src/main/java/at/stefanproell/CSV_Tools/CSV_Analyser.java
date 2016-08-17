@@ -122,6 +122,8 @@ public class CSV_Analyser {
 
                 if (column.getValue() != null) {
                     recordLength = column.getValue().toString().length();
+                }else{
+                    recordLength=0;
                 }
 
                 this.statistics.updateColumnStatistic(columnName, dataType, recordLength);
